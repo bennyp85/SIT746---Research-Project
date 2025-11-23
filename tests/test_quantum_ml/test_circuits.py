@@ -12,10 +12,10 @@ def test_create_feature_map_basic():
     n_qubits = 4
     feature_dim = 4
     fm = create_feature_map(n_qubits, feature_dim)
-    
+
     assert isinstance(fm, QuantumCircuit)
     assert fm.num_qubits == n_qubits
-    assert fm.name == 'FeatureMap'
+    assert fm.name == "FeatureMap"
 
 
 def test_create_feature_map_invalid_qubits():
@@ -35,10 +35,10 @@ def test_create_ansatz_basic():
     n_qubits = 4
     n_layers = 2
     ansatz = create_ansatz(n_qubits, n_layers)
-    
+
     assert isinstance(ansatz, QuantumCircuit)
     assert ansatz.num_qubits == n_qubits
-    assert ansatz.name == 'Ansatz'
+    assert ansatz.name == "Ansatz"
 
 
 def test_create_ansatz_single_layer():
@@ -47,11 +47,14 @@ def test_create_ansatz_single_layer():
     assert ansatz.num_qubits == 2
 
 
-@pytest.mark.parametrize("n_qubits,n_layers", [
-    (2, 1),
-    (4, 2),
-    (8, 3),
-])
+@pytest.mark.parametrize(
+    "n_qubits,n_layers",
+    [
+        (2, 1),
+        (4, 2),
+        (8, 3),
+    ],
+)
 def test_create_ansatz_various_sizes(n_qubits, n_layers):
     """Test ansatz creation with various sizes."""
     ansatz = create_ansatz(n_qubits, n_layers)
