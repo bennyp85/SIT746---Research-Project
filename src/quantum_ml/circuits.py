@@ -41,6 +41,7 @@ def create_feature_map(
 
     # Simple implementation - in practice, use Qiskit's ZZFeatureMap
     # This is a placeholder demonstrating the structure
+    # The hardcoded rotation angle (0.1) would be replaced with actual feature values
     for _ in range(reps):
         for i in range(n_qubits):
             qc.h(i)
@@ -64,9 +65,9 @@ def create_ansatz(n_qubits: int, n_layers: int = 1) -> QuantumCircuit:
     qc = QuantumCircuit(qr, name="Ansatz")
 
     for layer in range(n_layers):
-        # Rotation layer
+        # Rotation layer - in practice, these would be trainable parameters
         for i in range(n_qubits):
-            qc.ry(0.1, i)  # Parameters would be optimized
+            qc.ry(0.1, i)  # Placeholder angle; parameters would be optimized
 
         # Entanglement layer
         for i in range(n_qubits - 1):
