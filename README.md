@@ -1,9 +1,8 @@
 # Quantum Machine Learning Research Project
 
 [![CI](https://github.com/bennyp85/SIT746---Research-Project/workflows/CI/badge.svg)](https://github.com/bennyp85/SIT746---Research-Project/actions)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.12](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Qiskit](https://img.shields.io/badge/Qiskit-%E2%89%A50.45-6133BD)](https://qiskit.org/)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 A research project exploring the intersection of quantum computing and machine learning, developed as part of the SIT746 Honours Research Project at Deakin University.
 
@@ -14,33 +13,20 @@ This project investigates the application of quantum computing principles to mac
 - **Variational Quantum Algorithms (VQA)**: Implementing hybrid quantum-classical algorithms for optimization and machine learning tasks
 - **Quantum Neural Networks (QNN)**: Developing and benchmarking quantum circuit-based neural network architectures
 - **Quantum Feature Maps**: Exploring different encoding strategies for classical data in quantum states
-- **Quantum Kernels**: Investigating quantum kernel methods for classification and regression problems
 - **Performance Analysis**: Comparing quantum algorithms with classical baselines on various datasets
 
 ## 🛠 Technology Stack
 
 ### Quantum Computing
-- **Qiskit** (≥0.45.0): IBM's quantum computing framework
+- **Qiskit** (≥1.0): IBM's quantum computing framework
 - **Qiskit Aer**: High-performance quantum circuit simulators
 - **Qiskit Machine Learning**: Quantum ML algorithms and neural networks
-- **Qiskit Optimization**: Quantum optimization algorithms
 
 ### Machine Learning
-- **PyTorch** (≥2.0.0): Deep learning framework for hybrid models
-- **TensorFlow** (≥2.13.0): Alternative ML framework
-- **scikit-learn** (≥1.3.0): Classical ML algorithms and utilities
-- **NumPy** & **SciPy**: Numerical computing libraries
 
 ### Data Science & Visualization
-- **Pandas**: Data manipulation and analysis
-- **Matplotlib** & **Seaborn**: Visualization libraries
-- **Jupyter Lab**: Interactive development environment
 
 ### Development Tools
-- **pytest**: Testing framework with coverage reporting
-- **Black**: Code formatter (line length: 100)
-- **flake8** & **pylint**: Linting tools
-- **mypy**: Static type checker
 
 ## 📁 Project Structure
 
@@ -102,7 +88,7 @@ SIT746---Research-Project/
 
 ### Prerequisites
 
-- Python 3.9 or higher
+- Python 3.12 or higher
 - pip package manager
 - (Optional) Jupyter Lab for notebooks
 - (Optional) IBM Quantum account for real quantum hardware access
@@ -127,126 +113,61 @@ SIT746---Research-Project/
    ```
 
 3. **Install dependencies**
-   ```bash
-   pip install --upgrade pip
-   pip install -r requirements.txt
    ```
 
 4. **Verify installation**
-   ```bash
-   python -c "import qiskit; print(qiskit.__version__)"
-   pytest tests/ --collect-only  # See available tests
-   ```
 
 ### Configuration
 
 1. **Set up IBM Quantum account** (optional, for real hardware)
-   ```python
-   from qiskit import IBMQ
-   IBMQ.save_account('YOUR_API_TOKEN')
-   ```
 
 2. **Configure experiments**
-   - Copy `config/default.yml` to `config/local.yml`
-   - Modify parameters as needed
-   - Local config is git-ignored for your personal settings
+
+### Notebook demo
+
+- Launch `jupyter lab notebooks/correlated_data_demo.ipynb` (or `jupyter notebook ...`) to generate and visualize correlated samples.
+- The notebook imports helpers from `src/data/loaders.py`, so any changes to the core functions are automatically reflected in the interactive view.
 
 ### Quick Start Example
 
-```python
-from qiskit import QuantumCircuit
-from src.quantum_ml.circuits import create_feature_map
-from src.data.loaders import load_sample_data
-
 # Load sample data
-X_train, y_train = load_sample_data()
 
 # Create a quantum feature map
-n_qubits = 4
-feature_map = create_feature_map(n_qubits, feature_dimension=X_train.shape[1])
 
 # Build and visualize the circuit
-qc = QuantumCircuit(n_qubits)
-qc.compose(feature_map, inplace=True)
-print(qc.draw())
-```
 
 ## 🧪 Running Experiments
 
 ### Basic Workflow
 
 1. **Define an experiment configuration** in `config/experiments/`
-   ```yaml
-   experiment:
-     name: "quantum_classifier_benchmark"
-     dataset: "iris"
-     n_qubits: 4
-     n_layers: 2
-     backend: "qasm_simulator"
-     shots: 1024
-   ```
 
 2. **Run the experiment**
-   ```bash
-   python -m src.experiments.runner --config config/experiments/your_config.yml
-   ```
 
 3. **Analyze results** in `notebooks/` or view outputs in `results/`
 
 ### Example Experiments
 
-#### 1. Quantum vs Classical Classification
-```bash
-python -m src.experiments.runner --config config/experiments/classification_benchmark.yml
-```
-Compares quantum kernel methods with classical SVM on standard datasets.
 
-#### 2. Variational Quantum Eigensolver (VQE)
-```bash
-python -m src.experiments.runner --config config/experiments/vqe_optimization.yml
-```
-Tests VQE for finding ground state energies.
-
-#### 3. Quantum Neural Network Training
-```bash
-python -m src.experiments.runner --config config/experiments/qnn_training.yml
-```
-Trains a quantum neural network on a binary classification task.
 
 ### Running Tests
 
-```bash
+
 # Run all tests
-pytest
 
-# Run with coverage report
-pytest --cov=src --cov-report=html
 
-# Run specific test module
-pytest tests/test_quantum_ml/test_circuits.py
-
-# Run tests by marker
-pytest -m "not slow"  # Skip slow tests
-pytest -m "integration"  # Only integration tests
-```
 
 ### Code Quality Checks
 
-```bash
+
 # Format code with Black
-black src tests --line-length=100
 
 # Lint code
-flake8 src tests --max-line-length=100
 
 # Type checking
-mypy src --ignore-missing-imports
 
 # Run all checks
-black src tests --line-length=100 && \
-flake8 src tests --max-line-length=100 && \
-pytest --cov=src
-```
+
 
 ## 📊 Experiment Guide
 
