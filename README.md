@@ -47,7 +47,6 @@ SIT746---Research-Project/
 │   │   ├── __init__.py
 │   │   ├── circuits.py              # Quantum circuit definitions
 │   │   ├── feature_maps.py          # Data encoding strategies
-│   │   ├── kernels.py               # Quantum kernel methods
 │   │   └── models.py                # QNN and VQA models
 │   │
 │   ├── data/                         # Data processing
@@ -65,12 +64,13 @@ SIT746---Research-Project/
 │   └── experiments/                 # Experiment-specific configs
 │
 ├── notebooks/                        # Jupyter notebooks
-│   ├── 01_exploration.ipynb         # Initial data exploration
-│   ├── 02_quantum_circuits.ipynb    # Quantum circuit examples
-│   └── 03_experiments.ipynb         # Experiment notebooks
+│   ├── exploration.ipynb         # Initial data exploration
+│   ├── quantum_circuits.ipynb    # Quantum circuit examples
+│   └── experiments.ipynb         # Experiment notebooks
 │
 └── results/                          # Experiment results
     ├── figures/                      # Generated plots and visualizations
+    ├── metrics/                      # Performance metrics and logs
     ├── models/                       # Saved model checkpoints
     └── logs/                         # Experiment logs
 ```
