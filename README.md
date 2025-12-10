@@ -114,10 +114,6 @@ SIT746---Research-Project/
 
 2. **Configure experiments**
 
-### Notebook demo
-
-- Launch `jupyter lab notebooks/correlated_data_demo.ipynb` (or `jupyter notebook ...`) to generate and visualize correlated samples.
-- The notebook imports helpers from `src/data/loaders.py`, so any changes to the core functions are automatically reflected in the interactive view.
 
 ### Quick Start Example
 
