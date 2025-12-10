@@ -1,6 +1,5 @@
 # Quantum Machine Learning Research Project
 
-[![CI](https://github.com/bennyp85/SIT746---Research-Project/workflows/CI/badge.svg)](https://github.com/bennyp85/SIT746---Research-Project/actions)
 [![Python 3.12](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Qiskit](https://img.shields.io/badge/Qiskit-%E2%89%A50.45-6133BD)](https://qiskit.org/)
 
@@ -37,9 +36,7 @@ SIT746---Research-Project/
 ├── .gitignore                         # Git ignore rules
 │
 ├── .github/                           # GitHub configuration
-│   ├── copilot-instructions.md       # Coding standards and guidelines
-│   └── workflows/
-│       └── ci.yml                    # Continuous integration pipeline
+│   └── copilot-instructions.md       # Coding standards and guidelines
 │
 ├── docs/                             # Documentation
 │   ├── literature/                   # Literature reviews and paper summaries
@@ -62,12 +59,6 @@ SIT746---Research-Project/
 │       ├── __init__.py
 │       ├── runner.py                # Experiment execution framework
 │       └── utils.py                 # Experiment utilities
-│
-├── tests/                            # Test suite
-│   ├── __init__.py
-│   ├── test_quantum_ml/             # Tests for quantum ML modules
-│   ├── test_data/                   # Tests for data processing
-│   └── test_experiments/            # Tests for experiment runners
 │
 ├── config/                           # Configuration files
 │   ├── default.yml                  # Default configuration
@@ -149,24 +140,10 @@ SIT746---Research-Project/
 ### Example Experiments
 
 
+### Development Notes
 
-### Running Tests
-
-
-# Run all tests
-
-
-
-### Code Quality Checks
-
-
-# Format code with Black
-
-# Lint code
-
-# Type checking
-
-# Run all checks
+- Automated testing and CI/CD pipelines are intentionally disabled while the research prototypes mature.
+- Focus on experiment reproducibility, documentation, and incremental commits during this phase.
 
 
 ## 📊 Experiment Guide
@@ -215,7 +192,7 @@ This is a research project, but contributions and suggestions are welcome:
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/new-algorithm`)
 3. Make your changes following the coding guidelines
-4. Run tests and linting (`pytest && black src tests && flake8 src tests`)
+4. Run any relevant formatting or linting locally (for now, `black src && flake8 src` is sufficient)
 5. Commit your changes (`git commit -m 'Add new quantum algorithm'`)
 6. Push to the branch (`git push origin feature/new-algorithm`)
 7. Open a Pull Request
