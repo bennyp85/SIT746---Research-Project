@@ -1,0 +1,11 @@
+This Stock Market Dataset is designed for predictive analysis and machine learning applications in financial markets. It includes 13647 records of simulated stock trading data with features commonly used in stock price forecasting.
+
+🔹 Key Features
+Date – Trading day timestamps (business days only)
+Open, High, Low, Close – Simulated stock prices
+Volume – Trading volume per day
+RSI (Relative Strength Index) – Measures market momentum
+MACD (Moving Average Convergence Divergence) – Trend-following momentum indicator
+Sentiment Score – Simulated market sentiment from financial news & social media
+Target – Binary label (1: Price goes up, 0: Price goes down) for next-day prediction
+This dataset is useful for training hybrid deep learning models such as LSTM, CNN, and Attention-based networks for stock market forecasting. It enables financial analysts, traders, and AI researchers to experiment with market trends, technical analysis, and sentiment-based predictions.

@@ -1,0 +1,15 @@
+This dataset integrates multiple financial data sources to enable detailed stock market trend analysis and decision-making.
+
+Key Features:
+
+Daily Stock Trading Metrics – Includes open, high, low, close prices, and trading volume.
+
+Macroeconomic Indicators – Covers GDP growth, inflation rates, and interest rates.
+
+Sentiment-Labeled News – Financial news articles with positive, negative, or neutral sentiment tags.
+
+Multisource Integration – Combines structured and unstructured financial data for deeper insights.
+
+Comprehensive Market Coverage – Designed for stock trend analysis, investment strategies, and risk assessment.
+
+Supports Predictive Modeling – Enables better understanding of market dynamics and investor sentiment.
