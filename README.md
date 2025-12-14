@@ -1,229 +1,72 @@
-# Quantum Machine Learning Research Project
+# SIT746 Honours Research Project
 
-[![Python 3.12](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![Qiskit](https://img.shields.io/badge/Qiskit-%E2%89%A50.45-6133BD)](https://qiskit.org/)
+Python code + notebooks for the SIT746 research project. The repository currently contains:
+- Time-series preprocessing utilities and exploratory work on symbolic encodings (SAX + simple trend features / “TFSAX”-style).
+- Early scaffolding for quantum-ML experiments (module stubs; quantum dependencies are not yet wired in).
 
-A research project exploring the intersection of quantum computing and machine learning, developed as part of the SIT746 Honours Research Project at Deakin University.
+## Current State
 
-## 🎯 Project Overview
+- **Packaged code lives in `src/`** (setuptools “src layout”).
+- **Implemented utilities:** `src/data/preprocessing.py` (TSF parsing, resampling helpers, PAA + trend direction extraction).
+- **Exploratory notebooks:** `experiments/m4_eda.ipynb`, `experiments/tfsax_encoding.ipynb`, plus additional notebooks in `notebooks/`.
+- **Quantum code:** `src/quantum_ml/` exists but is currently minimal (placeholders).
 
-This project investigates the application of quantum computing principles to machine learning algorithms, leveraging IBM's Qiskit framework. The research focuses on:
-
-- **Variational Quantum Algorithms (VQA)**: Implementing hybrid quantum-classical algorithms for optimization and machine learning tasks
-- **Quantum Neural Networks (QNN)**: Developing and benchmarking quantum circuit-based neural network architectures
-- **Quantum Feature Maps**: Exploring different encoding strategies for classical data in quantum states
-- **Performance Analysis**: Comparing quantum algorithms with classical baselines on various datasets
-
-## 🛠 Technology Stack
-
-### Quantum Computing
-- **Qiskit** (≥1.0): IBM's quantum computing framework
-- **Qiskit Aer**: High-performance quantum circuit simulators
-- **Qiskit Machine Learning**: Quantum ML algorithms and neural networks
-
-### Machine Learning
-
-### Data Science & Visualization
-
-### Development Tools
-
-## 📁 Project Structure
+## Project Layout
 
 ```
-SIT746---Research-Project/
-├── README.md                           # This file
-├── requirements.txt                    # Python dependencies
-├── .gitignore                         # Git ignore rules
-│
-├── .github/                           # GitHub configuration
-│   └── copilot-instructions.md       # Coding standards and guidelines
-│
-├── docs/                             # Documentation
-│   ├── literature/                   # Literature reviews and paper summaries
-│   └── experiments/                  # Experiment logs and results analysis
-│
-├── src/                              # Source code
-│   ├── quantum_ml/                   # Core quantum ML implementations
-│   │   ├── __init__.py
-│   │   ├── circuits.py              # Quantum circuit definitions
-│   │   ├── feature_maps.py          # Data encoding strategies
-│   │   └── models.py                # QNN and VQA models
-│   │
-│   ├── data/                         # Data processing
-│   │   ├── __init__.py
-│   │   ├── loaders.py               # Dataset loading utilities
-│   │   └── preprocessing.py         # Data preprocessing and feature engineering
-│   │
-│   └── experiments/                  # Experiment orchestration
-│       ├── __init__.py
-│       ├── runner.py                # Experiment execution framework
-│       └── utils.py                 # Experiment utilities
-│
-├── config/                           # Configuration files
-│   ├── default.yml                  # Default configuration
-│   └── experiments/                 # Experiment-specific configs
-│
-├── notebooks/                        # Jupyter notebooks
-│   ├── exploration.ipynb         # Initial data exploration
-│   ├── quantum_circuits.ipynb    # Quantum circuit examples
-│   └── experiments.ipynb         # Experiment notebooks
-│
-└── results/                          # Experiment results
-    ├── figures/                      # Generated plots and visualizations
-    ├── metrics/                      # Performance metrics and logs
-    ├── models/                       # Saved model checkpoints
-    └── logs/                         # Experiment logs
+.
+├── config/
+│   └── default.yml
+├── docs/
+│   ├── design_docs/
+│   ├── experiments/
+│   └── literature/
+├── experiments/                # notebook-led experiments
+├── notebooks/                  # general exploration notebooks
+├── results/                    # outputs (figures/logs/models/etc.)
+└── src/
+    ├── data/
+    │   ├── preprocessing.py
+    │   └── datasets/
+    │       └── M4/             # bundled .tsf files used by notebooks
+    ├── experiments/            # (currently mostly scaffolding)
+    └── quantum_ml/             # (currently mostly scaffolding)
 ```
 
-## 🚀 Getting Started
+## Setup
 
-### Prerequisites
+### Requirements (what’s in `pyproject.toml`)
 
-- Python 3.12 or higher
-- pip package manager
-- (Optional) Jupyter Lab for notebooks
-- (Optional) IBM Quantum account for real quantum hardware access
+- Python `>=3.9`
+- Core deps: `numpy`, `matplotlib`
 
-### Installation
+Some notebooks/utilities also import packages that are not listed as core deps yet (e.g. `pandas`, `scipy`, Jupyter). Install them as needed for notebook work.
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/bennyp85/SIT746---Research-Project.git
-   cd SIT746---Research-Project
-   ```
+### Install (editable)
 
-2. **Create a virtual environment** (recommended)
-   ```bash
-   python -m venv venv
-   
-   # On Windows
-   venv\Scripts\activate
-   
-   # On macOS/Linux
-   source venv/bin/activate
-   ```
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -e .
+```
 
-3. **Install dependencies**
-   ```
+### Notebooks
 
-4. **Verify installation**
+```bash
+pip install jupyter pandas scipy
+jupyter lab
+```
 
-### Configuration
+## Documentation
 
-1. **Set up IBM Quantum account** (optional, for real hardware)
+- Experiment logging template: `docs/experiments/README.md`
+- Literature review notes: `docs/literature/README.md`
+- Design notes: `docs/design_docs/`
 
-2. **Configure experiments**
+## Project Info
 
-
-### Quick Start Example
-
-# Load sample data
-
-# Create a quantum feature map
-
-# Build and visualize the circuit
-
-## 🧪 Running Experiments
-
-### Basic Workflow
-
-1. **Define an experiment configuration** in `config/experiments/`
-
-2. **Run the experiment**
-
-3. **Analyze results** in `notebooks/` or view outputs in `results/`
-
-### Example Experiments
-
-
-### Development Notes
-
-- Automated testing and CI/CD pipelines are intentionally disabled while the research prototypes mature.
-- Focus on experiment reproducibility, documentation, and incremental commits during this phase.
-
-
-## 📊 Experiment Guide
-
-### Designing Experiments
-
-1. **Define Research Question**: Clearly state what you're investigating
-2. **Choose Datasets**: Select appropriate datasets for your research question
-3. **Design Quantum Circuits**: Create quantum circuits that encode your approach
-4. **Set Baselines**: Establish classical baselines for comparison
-5. **Run Experiments**: Execute experiments with proper controls
-6. **Analyze Results**: Statistical analysis and visualization
-7. **Document Findings**: Record observations in `docs/experiments/`
-
-### Experiment Best Practices
-
-- **Reproducibility**: Set random seeds (`np.random.seed(42)`)
-- **Version Control**: Commit code and configs before long experiments
-- **Logging**: Use detailed logging to track experiment progress
-- **Resource Management**: Monitor simulator memory usage for large circuits
-- **Incremental Testing**: Test on small datasets before scaling up
-- **Save Checkpoints**: Regularly save intermediate results
-- **Document Everything**: Keep detailed notes in experiment logs
-
-### Analyzing Results
-
-Results are automatically saved to `results/` with:
-- **Figures**: Plots and visualizations
-- **Metrics**: JSON files with performance metrics
-- **Logs**: Detailed execution logs
-- **Models**: Trained model parameters
-
-Use the provided Jupyter notebooks in `notebooks/` for interactive analysis and visualization.
-
-## 📚 Documentation
-
-- **Coding Guidelines**: See `.github/copilot-instructions.md` for detailed coding standards
-- **Literature Reviews**: Academic papers and references in `docs/literature/`
-- **Experiment Logs**: Detailed experiment documentation in `docs/experiments/`
-- **API Documentation**: Generated from docstrings using Sphinx (coming soon)
-
-## 🤝 Contributing
-
-This is a research project, but contributions and suggestions are welcome:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-algorithm`)
-3. Make your changes following the coding guidelines
-4. Run any relevant formatting or linting locally (for now, `black src && flake8 src` is sufficient)
-5. Commit your changes (`git commit -m 'Add new quantum algorithm'`)
-6. Push to the branch (`git push origin feature/new-algorithm`)
-7. Open a Pull Request
-
-## 📄 License
-
-This project is part of academic research at Deakin University. Please contact the repository owner for licensing information.
-
-## 👤 Author
-
-**Deakin University Honours Research**
 - Institution: Deakin University
-- Program: SIT746 - Research Project
-- Repository: [bennyp85/SIT746---Research-Project](https://github.com/bennyp85/SIT746---Research-Project)
+- Unit: SIT746 – Research Project
 
-## 🙏 Acknowledgments
-
-- IBM Quantum team for the Qiskit framework
-- Deakin University for research support
-- The quantum computing research community
-
-## 📞 Support
-
-For questions or issues:
-- Open an issue in this repository
-- Contact the project supervisor
-- Refer to [Qiskit documentation](https://qiskit.org/documentation/)
-
-## 🔗 Useful Resources
-
-- [Qiskit Textbook](https://qiskit.org/textbook/preface.html) - Learn quantum computing
-- [Qiskit Tutorials](https://qiskit.org/documentation/tutorials.html) - Hands-on examples
-- [Quantum Machine Learning](https://www.nature.com/articles/nature23474) - Survey paper
-- [IBM Quantum Experience](https://quantum-computing.ibm.com/) - Access to real quantum computers
-
----
-
-**Note**: This is a research project under active development. Code and documentation are continuously evolving as the research progresses.
+Note: this repository is under active development; modules and dependencies will change as experiments evolve.
