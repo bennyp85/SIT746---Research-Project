@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List, Optional, Tuple, Dict, Any
 
 try:
     import numpy as np
@@ -118,6 +118,98 @@ def compute_paa_series(series, n_segments: int = 20):
     for i, (start, end) in enumerate(zip(starts, ends)):
         out[i] = float(series_arr[start:end].mean())
     return out
+
+
+def _paa_segment_bounds(n: int, n_segments: int) -> List[Tuple[int, int]]:
+    if n <= 0:
+        raise ValueError("n must be positive")
+    if n_segments <= 0:
+        raise ValueError("n_segments must be positive")
+    if n_segments > n:
+        raise ValueError("n_segments cannot exceed the series length")
+
+    if np is None:
+        bounds: List[Tuple[int, int]] = []
+        for i in range(n_segments):
+            start = (i * n) // n_segments
+            end = ((i + 1) * n) // n_segments
+            if end <= start:
+                end = min(start + 1, n)
+            bounds.append((start, end))
+        return bounds
+
+    boundaries = np.linspace(0, n, num=n_segments + 1)
+    starts = np.floor(boundaries[:-1]).astype(int)
+    ends = np.floor(boundaries[1:]).astype(int)
+    ends = np.maximum(ends, starts + 1)
+    ends = np.minimum(ends, n)
+    starts = np.minimum(starts, n - 1)
+    return list(zip(starts.tolist(), ends.tolist()))
+
+
+def compute_paa_trend_segments(series, n_segments: int = 20):
+    """Compute per-PAA-segment trend deltas using each segment's first and last values.
+
+    Returns:
+      - trend_deltas: shape (n_segments,) array (or list if numpy missing)
+      - segments: list of dicts with start/end/first/last/delta per segment
+    """
+    if series is None:
+        raise ValueError("series must not be None")
+    if n_segments <= 0:
+        raise ValueError("n_segments must be positive")
+
+    if np is None:
+        values = [float(x) for x in series]
+        n = len(values)
+        if n == 0:
+            raise ValueError("series must not be empty")
+        bounds = _paa_segment_bounds(n, n_segments)
+
+        deltas: List[float] = []
+        segments: List[Dict[str, Any]] = []
+        for i, (start, end) in enumerate(bounds):
+            first = float(values[start])
+            last = float(values[end - 1])
+            delta = last - first
+            deltas.append(delta)
+            segments.append(
+                {
+                    "segment": int(i),
+                    "start": int(start),
+                    "end": int(end),
+                    "first": first,
+                    "last": last,
+                    "delta": delta,
+                }
+            )
+        return deltas, segments
+
+    series_arr = np.asarray(series, dtype=float).reshape(-1)
+    series_arr = series_arr[np.isfinite(series_arr)]
+    n = int(series_arr.size)
+    if n == 0:
+        raise ValueError("series must not be empty")
+    bounds = _paa_segment_bounds(n, n_segments)
+
+    deltas = np.empty(n_segments, dtype=float)
+    segments: List[Dict[str, Any]] = []
+    for i, (start, end) in enumerate(bounds):
+        first = float(series_arr[start])
+        last = float(series_arr[end - 1])
+        delta = last - first
+        deltas[i] = delta
+        segments.append(
+            {
+                "segment": int(i),
+                "start": int(start),
+                "end": int(end),
+                "first": first,
+                "last": last,
+                "delta": float(delta),
+            }
+        )
+    return deltas, segments
 
 
 def paa_trend_directions(
