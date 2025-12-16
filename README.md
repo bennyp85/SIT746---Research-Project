@@ -17,20 +17,23 @@ Python code + notebooks for the SIT746 research project. The repository currentl
 .
 ├── config/
 │   └── default.yml
+├── data/                       # Local data directory (not committed)
+│   └── M4/                     # M4 time series datasets
 ├── docs/
 │   ├── design_docs/
 │   ├── experiments/
 │   └── literature/
 ├── experiments/                # notebook-led experiments
 ├── notebooks/                  # general exploration notebooks
+├── research/                   # Main importable package
+│   ├── data/
+│   │   ├── preprocessing.py
+│   │   └── loaders.py
+│   ├── quantum/
+│   │   └── circuits.py
+│   └── experiments/
 ├── results/                    # outputs (figures/logs/models/etc.)
-└── src/
-    ├── data/
-    │   ├── preprocessing.py
-    │   └── datasets/
-    │       └── M4/             # bundled .tsf files used by notebooks
-    ├── experiments/            # (currently mostly scaffolding)
-    └── quantum_ml/             # (currently mostly scaffolding)
+└── pyproject.toml
 ```
 
 ## Setup

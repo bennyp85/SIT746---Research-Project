@@ -87,6 +87,9 @@ results/*.csv
 results/*.json
 !results/.gitkeep
 
+# Data directory (large files, not committed)
+data/
+
 # Notebooks outputs
 notebooks/*.html
 

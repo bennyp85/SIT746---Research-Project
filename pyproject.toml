@@ -13,8 +13,6 @@ dependencies = [
     "matplotlib>=3.7",
 ]
 
-[tool.setuptools]
-package-dir = {"" = "src"}
-
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["."]
+include = ["research*"]
