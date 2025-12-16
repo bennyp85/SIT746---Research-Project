@@ -6,10 +6,10 @@ Python code + notebooks for the SIT746 research project. The repository currentl
 
 ## Current State
 
-- **Packaged code lives in `src/`** (setuptools “src layout”).
-- **Implemented utilities:** `src/data/preprocessing.py` (TSF parsing, resampling helpers, PAA + trend direction extraction).
+- **Packaged code lives in `research/`** (flat research package layout).
+- **Implemented utilities:** `research/data/preprocessing.py` (TSF parsing, resampling helpers, PAA + trend direction extraction).
 - **Exploratory notebooks:** `experiments/m4_eda.ipynb`, `experiments/tfsax_encoding.ipynb`, plus additional notebooks in `notebooks/`.
-- **Quantum code:** `src/quantum_ml/` exists but is currently minimal (placeholders).
+- **Quantum code:** `research/quantum/` exists but is currently minimal (placeholders).
 
 ## Project Layout
 
