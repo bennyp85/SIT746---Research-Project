@@ -9,7 +9,6 @@ import pylab
 import math
 from typing import Union
 from IPython.display import clear_output
-from qiskit_algorithms.utils import algorithm_globals
 
 
 ##### Various small functions
