@@ -110,3 +110,6 @@ config/local.yml
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# Backup files
+*.backup
